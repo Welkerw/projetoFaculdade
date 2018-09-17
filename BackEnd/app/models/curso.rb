@@ -1,0 +1,4 @@
+class Curso < ApplicationRecord
+
+
+end
