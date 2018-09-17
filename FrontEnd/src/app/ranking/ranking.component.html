@@ -1,0 +1,52 @@
+<h1>Ranking Geral</h1>
+<div class="right">
+  <form id="search">
+    <input #search type="search" placeholder="Search" [ngClass]="{'filled':filled}" 
+          (click)="filled=true" (blur)="filled=search.value?true:false"> 
+  </form>
+</div>
+<div class="button-container">
+  <div class="option" (click)="rankingPorInstituicao()"><a>Ranking por Instituição</a></div>
+  <div class="option" (click)="rankingPorCurso()"><a>Ranking por Curso</a></div>
+  <div class="option" (click)="rankingPorMediaAluno()"><a>Ranking por Nota Média por Aluno</a></div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="content table-responsive table-full-width">
+          <table class="table table-hover" *ngIf="ranking.length > 0">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nome Instituição</th>
+                <th *ngIf="typeRanking!='I'">Nome Curso</th>
+                <th>Nota Geral</th>
+                <th *ngIf="typeRanking!='I'">Nota Média</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of ranking">
+                <td>
+                  {{p.id}}
+                </td>
+                <td *ngIf="typeRanking!='I'">
+                  {{p.Instituicao.nome}}
+                </td>
+                <td>
+                  {{p.nome}}
+                </td>
+                <td>
+                  {{p.notaGeral}}
+                </td>
+                <td *ngIf="typeRanking!='I'">
+                  {{p.notaMediaGeral}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

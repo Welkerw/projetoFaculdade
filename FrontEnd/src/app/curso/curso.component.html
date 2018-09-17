@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 col-md-7">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Curso</h4>
+        </div>
+        <div class="content">
+          <form method="post"  #frm="ngForm" (ngSubmit)="criar(frm)">
+            <div class="row">
+              <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="faculdade">Faculdade</label>
+                    <select id="idInstituicao" #Id="ngModel" (change)="setInstituicao($event.target.value)" class=" form-control" [(ngModel)]="curso.idInstituicao" name="idInstituicao">  
+                       <option selected="" value=""></option>  
+                       <option value="{{l.id}}" [value]="l.id" *ngFor="let l of faculdades">  
+                            {{l.nome}}
+                        </option>
+                    </select>  
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="nome">Nome: </label>
+                    <input type="text" id="nome" name="nome"
+                    class="form-control border-input" placeholder="Nome" 
+                    [(ngModel)]="curso.nome">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="notaGeral">Nota Geral</label>
+                  <input type="text" id="nota" name="nota"
+                    class="form-control border-input" placeholder="nota" 
+                    [(ngModel)]="curso.nota">
+                </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="notaMedia">Nota Média dos alunos</label>
+                    <input type="text" id="notaMediaGeral" name="notaMedia"
+                      class="form-control border-input" placeholder="notaMediaGeral" 
+                      [(ngModel)]="curso.notaMediaGeral">
+                  </div>
+                </div>
+              <div class="col-md-1" style="padding-left: 2em">
+                <button [disabled]="frm.invalid" type="submit" class="btn btn-info btn-fill btn-wd">Criar</button>
+              </div>
+          </form>
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card card-plain">
+                      <div class="content table-responsive table-full-width">
+                          <table class="table table-hover" *ngIf="cursos.length > 0">
+                              <thead>
+                                  <tr>
+                                      <th >Id</th>
+                                      <th >Nome</th>
+                                      <th >Nota Geral</th>
+                                      <th >Nota Média</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let p of cursos">
+                                      <td>
+                                          {{p.id}}
+                                      </td>
+                                      <td>
+                                          {{p.nome}}
+                                      </td>
+                                      <td>
+                                          {{p.nota}}
+                                      </td>
+                                      <td>
+                                          {{p.notaMediaGeral}}
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
